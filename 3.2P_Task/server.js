@@ -1,20 +1,24 @@
+const express = require('express');
+const path = require('path');
+const app = express();
+const PORT = 3000;
+
 const quotes = [
-    "Believe in yourself and all that you are.",
-    "You are stronger than you think.",
-    "Success is not final, failure is not fatal: It is the courage to continue that counts.",
-    "Dream big and dare to fail.",
-    "The only limit to our realization of tomorrow is our doubts of today.",
-    "Hardships often prepare ordinary people for an extraordinary destiny."
+  "Believe you can and you're halfway there.",
+  "Every moment is a fresh beginning.",
+  "Turn your wounds into wisdom.",
+  "Do what you can with what you have.",
+  "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+  "The best way to get started is to quit talking and begin doing."
 ];
 
-$(document).ready(function(){
-    $('.materialboxed').materialbox();
+app.use(express.static(path.join(__dirname, 'public')));
 
-    $('#clickMeButton').click(() => {
-        let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-        $('#quoteText').text(randomQuote);
-        
-        let newButtonText = "Another One!";
-        $('#clickMeButton').html(`<i class="material-icons left">auto_fix_high</i>${newButtonText}`);
-    });
+app.get('/api/quote', (req, res) => {
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  res.json({ quote: quotes[randomIndex] });
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running at http://localhost:${PORT}`);
 });
