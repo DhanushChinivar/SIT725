@@ -66,13 +66,35 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
   <!-- Custom JS -->
-  <script src="script.js"></script>
   <script>
-    // Initialize materialboxed images
-    document.addEventListener('DOMContentLoaded', function () {
-      const elems = document.querySelectorAll('.materialboxed');
+    document.addEventListener("DOMContentLoaded", function () {
+      const elems = document.querySelectorAll(".materialboxed");
       M.Materialbox.init(elems);
+
+      fetchQuote();
+
+      document.getElementById("new-quote").addEventListener("click", function (e) {
+        e.preventDefault();
+        fetchQuote();
+      });
     });
+
+    function fetchQuote() {
+      fetch("/api/quote")
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.data) {
+            document.getElementById("quote-text").textContent =
+              `"${data.data.text}" - ${data.data.author}`;
+          } else {
+            document.getElementById("quote-text").textContent = "No quote found.";
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+          document.getElementById("quote-text").textContent = "Error loading quote.";
+        });
+    }
   </script>
 </body>
 </html>
