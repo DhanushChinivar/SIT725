@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>University Portal - Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .hero-banner {
+      background-image: url("/images/banner.png"); 
+      background-size: cover;
+      background-position: center;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+    }
+    .hero-banner h1 {
+      font-size: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <%- include('partials/navbar') %>
+
+  <div class="hero-banner mb-5">
+    <h1>Welcome to University Portal</h1>
+  </div>
+
+  <div class="container text-center mb-5">
+    <h2 class="mb-4">Empowering Students for the Future</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card shadow-sm mb-4">
+          <img src="/images/Register.png" class="card-img-top" alt="Student Form"> 
+          <div class="card-body">
+            <h5 class="card-title">Student Registration</h5>
+            <p class="card-text">Easily register students into the system with our simple form.</p>
+            <a href="/register" class="btn btn-outline-primary">Register Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm mb-4">
+          <img src="/images/programs.png" class="card-img-top" alt="Programs"> 
+          <div class="card-body">
+            <h5 class="card-title">University Programs</h5>
+            <p class="card-text">Explore the various academic programs and courses we offer.</p>
+            <a href="/programs" class="btn btn-outline-primary">Explore Programs</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm mb-4">
+          <img src="/images/aboutus.png" class="card-img-top" alt="About Us"> 
+          <div class="card-body">
+            <h5 class="card-title">About Us</h5>
+            <p class="card-text">Learn about our mission, vision, and what makes us unique.</p>
+            <a href="/about" class="btn btn-outline-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
