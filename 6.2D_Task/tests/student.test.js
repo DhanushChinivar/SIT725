@@ -1,4 +1,3 @@
-// student.test.js - Basic Passing Tests Only (Cleaned)
 
 const chai = require('chai');
 const chaiHttp = require('chai-http');
